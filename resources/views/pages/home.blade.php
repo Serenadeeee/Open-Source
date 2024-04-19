@@ -260,11 +260,11 @@
 <!---------- Banner ---------->
 <div class="wrap-banner">
     <div class="wrap-img text-center">
-        <img src="{{url('public/client/img/hanglaptop.png')}}" alt="DK Shop" title="DK Shop - Mua bán laptop chính hãng">
+        <img src="{{url('public/client/img/hanglaptop.png')}}" alt="NT Shop" title="NT Shop - Mua bán laptop chính hãng">
     </div>
     <div class="container text-center">
         <div class="title-content">
-            <img src="{{url('public/client/img/dot-title-left.png')}}" alt=""> DK shop - prestigious laptop shop <img src="{{url('public/client/img/dot-title-right.png')}}" alt=""></div>
+            <img src="{{url('public/client/img/dot-title-left.png')}}" alt=""> NT shop - prestigious laptop shop <img src="{{url('public/client/img/dot-title-right.png')}}" alt=""></div>
         <div class="descript-introduce">
             <ol>
                 <li>&emsp;Bạn đang cần tìm một địa chỉ uy tín bán laptop chất lượng và an toàn?</li>
@@ -274,10 +274,10 @@
                 <li>&emsp;Bạn đã biết gì về cấu hình máy chưa?</li>
                 <li>&emsp;Ở Đà Nẵng bạn không biết nơi nào bán Laptop CHẤT LƯỢNG và AN TOÀN với giá cả hợp lý ?</li>
             </ol>
-            <span class="text-uppercase"><i class="pr-3 fas fa-greater-than"></i>Hãy để <a href="{{url('/')}}">Dk shop</a> giải quyết tất cả các vấn đề này cho bạn.</span>
+            <span class="text-uppercase"><i class="pr-3 fas fa-greater-than"></i>Hãy để <a href="{{url('/')}}">NT SHOP</a> giải quyết tất cả các vấn đề này cho bạn.</span>
         </div>
         <div class="wrap-program">
-            <div class="col-md-6"><img src="{{url('public/client/img/banner-logoo.png')}}" width="100%" alt="DK Shop" title="DK Shop - Mua bán laptop chính hãng"></div>
+            <div class="col-md-6"><img src="{{url('public/client/img/banner-logoo.png')}}" width="100%" alt="NT SHOP" title="NT SHOP - Mua bán laptop chính hãng"></div>
             <div class="col-md-3">
                 <div class="rotate-y mt-4 text-center">
                     <a href="#"><img src="{{url('public/client/img/quality.png')}}" alt="Uy tín chất lượng"></a>
@@ -291,7 +291,7 @@
                 </div>
                 <p class="program-title">Giá cả hợp lý</p>
                 <div>
-                    <p>Giá có thể không tốt nhất nhưng DK Shop cam kết chất lượng luôn tương xứng với giá cả.</p>
+                    <p>Giá có thể không tốt nhất nhưng NT Shop cam kết chất lượng luôn tương xứng với giá cả.</p>
                 </div>
             </div>
             <div class="col-md-3">
@@ -300,14 +300,14 @@
                 </div>
                 <p class="program-title">Bảo hành uy tín</p>
                 <div>
-                    <p>Tất cả sản phẩm tại Dk Shop đều có thể bảo hành và đổi trả khi máy gặp sự cố</p>
+                    <p>Tất cả sản phẩm tại NT Shop đều có thể bảo hành và đổi trả khi máy gặp sự cố</p>
                 </div>
                 <div class="rotate-y mt-4 text-center">
                     <a href="#"><img src="{{url('public/client/img/free-ship.png')}}" alt="Nhanh chóng chính xác"></a>
                 </div>
                 <p class="program-title">Nhanh chóng chính xác</p>
                 <div>
-                    <p>Dk Shop cam kết giao hàng tận tay cực nhanh cho các đơn hàng nội thành.</p>
+                    <p>NT Shop cam kết giao hàng tận tay cực nhanh cho các đơn hàng nội thành.</p>
                 </div>
             </div>
         </div>

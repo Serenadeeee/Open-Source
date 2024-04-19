@@ -11,9 +11,9 @@
             <div class="row">
                 <div class="col-md-5">
                     <p>
-                        <div class="title-footer">DK SHOP</div>
+                        <div class="title-footer">NT SHOP</div>
                         <span>&emsp;&emsp;<i class="mr-3 fas fa-map-marker-alt"></i>Địa chỉ:<a class="row-bottom-2" href="https://maps.app.goo.gl/Y364sLMbjDjRuVmSA"> 36 Tôn Thất Đạm, Phường Nguyễn Thái Bình, Quận 1, Thành phố Hồ Chí Minh</a></span><br>
-                        <span>&emsp;&emsp;<i class="mr-3 fas fa-phone-alt"></i>Điện thoại:<a class="row-bottom-2" href="tel: 0941 547 945"> 077 620 6278  </a></span><br>
+                        <span>&emsp;&emsp;<i class="mr-3 fas fa-phone-alt"></i>Điện thoại:<a class="row-bottom-2" href="tel: 0941 547 945"> 0941 547 945  </a></span><br>
                         <span>&emsp;&emsp;<i class="mr-3 fas fa-envelope"></i>Email:<a class="row-bottom-2" href="mailto: ctus24@gmail.com"> ctus24@gmail.com</a></span><br>
                         <span>&emsp;&emsp;<i class="mr-3 fas fa-envelope"></i>Email:<a class="row-bottom-2" href="mailto: nnhi24@gmail.com"> nnhi24@gmail.com</a></span>
                     </p>
