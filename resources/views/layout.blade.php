@@ -58,8 +58,8 @@
         </div>
         <div class="container-fluid pb-3 header-pc">
             <div class="row">
-                <a class="col-sm-1" href="{{url('/')}}" title="DK Shop- Mua bán laptop chính hãng">
-                    <img src="{{url('public/client/img/logo (1).png')}}" alt="DK Shop- Mua bán laptop chính hãng" width="192" height="68">
+                <a class="col-sm-1" href="{{url('/')}}" title="N-T Shop- Mua bán laptop chính hãng">
+                    <img src="{{url('public/client/img/logo (1).png')}}" alt="N-T Shop- Mua bán laptop chính hãng" width="250" height="100">
                 </a>
                 <div class="col-sm-2">
                     <div class="row">
@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-md-2 mt-4"><img src="{{url('public/client/img/icon-product.png')}}" alt="icon-product"></div>
                         <div class="col-md-10 mt-3">
-                            <a class="item-row1" href="#">Sản phẩm Dk shop</a><br/>
+                            <a class="item-row1" href="#">Sản phẩm N-T shop</a><br/>
                             <a class="item-row2" href="#">Đẳng cấp thế giới</a>
                         </div>
                     </div>
@@ -185,8 +185,8 @@
         <!-- Begin Header Responsive -->
         <div class="nav-responsive">
             <div class="logo-homepage">
-                <a class="icon-logo" href="{{url('/')}}" title="DK Shop- Mua bán laptop chính hãng">
-                    <img src="{{url('public/client/img/logoo-mobile.png')}}" alt="DK Shop- Mua bán laptop chính hãng">
+                <a class="icon-logo" href="{{url('/')}}" title="N-T Shop- Mua bán laptop chính hãng">
+                    <img src="{{url('public/client/img/logoo-mobile.png')}}" alt="N-T Shop- Mua bán laptop chính hãng">
                 </a>
             </div>
             <div class="nav-wrapper-res">
@@ -232,10 +232,10 @@
                             <a href="tel: 0941 547 945">0941 547 945</a>
                         </li>
                         <li class="col-md-5 nav-row-item">
-                            <a href="tel: 0932 560 189">0932 560 189 (giờ hành chính)</a>
+                            <a href="tel: 0932 560 189">0932 560 189</a>
                         </li>
                         <li class="col-md-10 nav-row-item">
-                            <a href="mailto: ntphat.20it10@vku.udn.vn">ntphat.20it10@vku.udn.vn</a>
+                            <a href="mailto: kimngoctran1703@gmail.com">NTSHOP@gmail.com.vn</a>
                         </li>
                     </ul>
                 </div>
@@ -253,7 +253,7 @@
         </div>
         <div id="" class="show-nav-left js-modal-nav">
             <div class="nav-left js-show-nav-left">
-                <div class="head-left-nav"> Menu DK Shop
+                <div class="head-left-nav"> Menu N-T Shop
                     <div class="icon-left-nav js-icon-back"></div>
                 </div>
                 <ul id="menu-left">
@@ -392,7 +392,7 @@
                         <a href="https://www.facebook.com/messages/t/100028208080368/   "><i class="fab fa-facebook-messenger"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
-                    <div class="col-md-6 copyright">Coppyright©2022 DK shop All Rights Reserved | Designed by DK Team</div>
+                    <div class="col-md-6 copyright">Coppyright©2024 N-T shop All Rights Reserved | Designed by Introvert Team</div>
                 </div>
             </div>
         </div>
@@ -404,11 +404,11 @@
                 <div class="col-md-3">
                     <span class="row-bottom-1">Hotline:</span>
                     <a class="row-bottom-2" href="tel: 0941 547 945"> 0941 547 945</a>
-                    <span> (giờ hành chính)</span>
+                   
                 </div>
                 <div class="col-md-3">
                     <span class="row-bottom-1">Email:</span>
-                    <a class="row-bottom-2" href="mailto: ducna.21it@vku.udn.vn"> ducna.21it@vku.udn.vn</a>
+                    <a class="row-bottom-2" href="mailto: kimngoctran1703@gmail.com"> NTSHOP@gmail.com</a>
                 </div>
             </div>
         </div>

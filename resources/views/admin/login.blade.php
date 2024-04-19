@@ -63,8 +63,7 @@
         </div>
     </div>
     <!-- Re Captcha -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+    <script src="https://www.recaptcha.net/recaptcha/api.js"></script>
     <!-- Form validator -->
     <script src="{{asset('public/server/js/jquery.form-validator.min.js')}}"></script>
     <script type="text/javascript">

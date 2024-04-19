@@ -19,7 +19,7 @@
 }
 
 body {
-    color: #92278f;
+    color: #0D0D0D;
     padding: 0;
     margin: 0;
     background-color: #f7ffec;
@@ -60,7 +60,7 @@ a {
 }
 
 .btn-violet {
-    background-color: #92278f;
+    background-color: #050A30;
 }
 
 
@@ -87,7 +87,7 @@ header {
 }
 
 .wrapper-top a {
-    color: #92278f;
+    color: #050A30;
 }
 
 .detail {
@@ -137,7 +137,7 @@ header {
     font-weight: bold;
     font-family: 'Myriad';
     text-transform: uppercase;
-    color: #92278f;
+    color: #050A30;
 }
 
 .item-row1:hover,
@@ -193,7 +193,7 @@ header {
     background: #FFFFFF;
     width: 300px;
     padding: 10px;
-    border-top: 3px solid #92278f;
+    border-top: 3px solid ;
     border-radius: 10px;
     box-shadow: 0 3px 3px #aaaaaa;
     z-index: 1;
@@ -256,13 +256,13 @@ header {
 }
 
 .navbar>ul>li>a {
-    color: #92278f;
+    color: #050A30;
     font-size: 22px;
     font-family: 'LinotteBold';
 }
 
 .navbar>ul>li>a:focus {
-    color: #92278f;
+    color: #050A30;
 }
 
 .nav-link {
@@ -283,13 +283,13 @@ header {
     border: none;
     padding: 0;
     min-width: 200px;
-    border-top: 3px solid #92278f !important;
+    border-top: 3px solid #050A30 !important;
     border-radius: 10px;
     box-shadow: 0 3px 3px #aaaaaa;
 }
 
 .subnav li a {
-    color: #92278f;
+    color: #050A30;
     font-size: 18px;
     font-family: 'LinotteBold';
 }
@@ -315,7 +315,7 @@ header {
 .dropdown-divider {
     opacity: 0.6;
     margin: 0;
-    border-top: 1px solid #92278f;
+    border-top: 1px solid ;
 }
 
 
@@ -435,7 +435,7 @@ header {
 }
 
 .show-nav-res li a {
-    color: #92278f;
+    color: #050A30;
 }
 
 .nav-row .form-control {
@@ -476,7 +476,7 @@ header {
 }
 
 .show-nav-left .nav-left li a {
-    color: #92278f;
+    color: #050A30;
     font-size: 22px;
 }
 
@@ -639,7 +639,7 @@ header {
 }
 
 .box-product .info-product h3:hover a {
-    color: #92278f;
+    color: #050A30;
 }
 
 .box-product .price-product p {
