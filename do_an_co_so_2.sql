@@ -97,15 +97,15 @@ CREATE TABLE `categories_product` (
 --
 
 INSERT INTO `categories_product` (`category_id`, `category_name`, `meta_keywords`, `category_desc`, `category_status`, `created_at`, `updated_at`) VALUES
-(23, 'HP', 'HP', 'Tốt nhất cho tính năng 2 trong 1', 1, '2021-10-16', '2022-11-17 15:37:13'),
-(24, 'LENOVO', 'LENOVO', 'Được đánh giá tốt nhất', 1, '2021-10-16', '2022-11-17 15:36:23'),
-(25, 'SAMSUM', 'SAMSUM', 'Uy tín chất lượng', 1, '2021-10-16', '2022-11-17 15:32:07'),
-(26, 'MICROSOFT', 'MICROSOFT', 'Thay thế tốt nhất của Apple', 0, '2021-10-16', '2022-11-27 05:53:33'),
-(27, 'ASUS', 'ASUS', 'Thiết kế thân máy tốt nhất', 1, '2021-10-19', '2022-11-17 15:33:49'),
-(28, 'RAZER', 'RAZER', 'Thiết kế thân máy tốt nhất.', 1, '2021-10-19', '2022-11-17 22:35:00'),
-(29, 'APPLE', 'APPLE', 'Hỗ trợ khách hàng tốt nhất', 1, '2021-10-19', '2022-11-17 15:33:33'),
-(30, 'DELL', 'DELL', 'Tốt nhất trong việc đổi mới', 1, '2021-10-19', '2022-11-17 15:37:38'),
-(34, 'ACER', 'ACER', 'Lựa chọn tốt nhất', 0, '2021-11-25', '2022-11-27 06:57:21');
+(23, 'HP', 'HP', 'Tốt nhất cho tính năng 2 trong 1', 1, '2024-1-16', '2024-1-17 15:37:13'),
+(24, 'LENOVO', 'LENOVO', 'Được đánh giá tốt nhất', 1, '2024-1-16', '2024-1-17 15:36:23'),
+(25, 'SAMSUM', 'SAMSUM', 'Uy tín chất lượng', 1, '2024-1-16', '2024-1-17 15:32:07'),
+(26, 'MICROSOFT', 'MICROSOFT', 'Thay thế tốt nhất của Apple', 0, '2024-1-16', '2024-1-27 05:53:33'),
+(27, 'ASUS', 'ASUS', 'Thiết kế thân máy tốt nhất', 1, '2024-1-19', '2024-1-17 15:33:49'),
+(28, 'RAZER', 'RAZER', 'Thiết kế thân máy tốt nhất.', 1, '2024-1-19', '2024-1-17 22:35:00'),
+(29, 'APPLE', 'APPLE', 'Hỗ trợ khách hàng tốt nhất', 1, '2024-1-19', '2024-1-17 15:33:33'),
+(30, 'DELL', 'DELL', 'Tốt nhất trong việc đổi mới', 1, '2024-1-19', '2024-1-17 15:37:38'),
+(34, 'ACER', 'ACER', 'Lựa chọn tốt nhất', 0, '2024-1-25', '2024-1-27 06:57:21');
 
 -- --------------------------------------------------------
 
@@ -128,8 +128,8 @@ CREATE TABLE `coupon` (
 
 INSERT INTO `coupon` (`coupon_id`, `coupon_name`, `coupon_code`, `coupon_time`, `coupon_condition`, `coupon_number`) VALUES
 (1, 'Giảm giá dịch Covid-19', 'COVID19', 10, 1, 10),
-(4, 'Giáng sinh 2022', 'NOEL2022', 1, 1, 30),
-(5, 'Ngày nhà giáo Việt Nam', 'GIAOVIEN2022', 10, 2, 70000);
+(4, 'Giáng sinh 2024', 'NOEL2024', 1, 1, 30),
+(5, 'Ngày nhà giáo Việt Nam', 'GIAOVIEN2024', 10, 2, 70000);
 
 -- --------------------------------------------------------
 
