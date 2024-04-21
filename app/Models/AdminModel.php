@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class AdminModel extends Authenticatable {
-    
     public $timestamps = false; //set time to false
     protected $fillable = [
     	'admin_user', 'admin_password', 'admin_name', 'admin_phone'

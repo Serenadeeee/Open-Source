@@ -141,6 +141,9 @@ Route::post('/autocomplete-ajax', [HomeControllerHomeController::class, 'autocom
 // Route::get('/gui-mail', [MailController::class, 'send_mail']);
 
 
+Route::get('/quen_mat_khau', [MailController::class, 'quen_mat_khau']);
+Route::post('/recover_pass', [MailController::class, 'recover_pass']);
+
 // ---------------------------------------- Message Controller ----------------------------------------
 Route::get('/admin/chinh-sua-mail', [MessageController::class, 'edit_mail']);
 Route::get('/admin/tin-nhan-lien-he', [MessageController::class, 'mess_with_us']);
@@ -218,5 +221,7 @@ Route::post('/admin/them-video', [VideosController::class, 'insert_video']);
 Route::post('/admin/hien-thi-video', [VideosController::class, 'select_video']);
 Route::group(['middleware' => 'auth.roles'], function() {
     Route::post('/admin/xoa-video', [VideosController::class, 'delete_video']);
+
+
 });
 

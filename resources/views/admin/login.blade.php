@@ -52,7 +52,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="">Quên mật khẩu?</a>
+                                        <a class="small" href="{{url('/quen_mat_khau')}}">Quên mật khẩu?</a>
                                     </div>
                                 </div>
                             </div>

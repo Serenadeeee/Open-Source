@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Container\Container;
+use Illuminate\Support\Str;
+use Session;
+use App\Carbon;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Model\AdminModel;
 
 class MailController extends Controller {
 
@@ -21,4 +28,43 @@ class MailController extends Controller {
         });
         //--send mail
     }
+
+    public function quen_mat_khau(){
+        return view('admin.forget_pass');
+    }
+
+    public function recover_pass(Request $request){
+        $data = $request->all();
+
+ //       $now = Carbon::now("Asia/Ho_Chi_Minh")->format('d-m-Y');
+        $title_mail = "Lấy lại mật khẩu";
+      //  $token_random = Str::random();
+        $admin = AdminModel::where('admin_user','=',$data['admin_email'])->get();
+        foreach($admin as $key ->$value){
+            $admin_id = $value->admin_id;
+
+        }
+        if($admin){
+            $count_admin = $admin->count();
+                if($count_admin==0){
+                    return redirect()->back()->with('error','Email chưa được đăng kí để khôi phục mật khẩu');
+                }else{
+                    $token_random = Str::random();
+                    $admin = Admin::find($admin_id);
+                    $admin->admin_token = $token_random;
+                    $admin->save();
+
+                    $to_email=$data['admin_email'];
+                    $link_reset_pass=url('update_new_pass?email='.$to_email.'&token='.$token_random);
+                    $data = array("name"=>$title_mail,"body"=>$link_reset_pass,"email"=>data['admin_email']);
+                    Mail::send('pages.admin.forgot_pass_notify',['data'=>$data],function($message) use ($title_mail,$data)
+                    {
+                        $message->to($data['email'])->subject($title_mail);//send this mail with subject
+                        $message->from($data['email'],$title_mail);//send from this mail
+                    });
+
+        }
+        
+    }
+}
 }
