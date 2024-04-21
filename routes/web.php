@@ -19,7 +19,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\CheckoutController;
-
+use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -221,7 +221,16 @@ Route::post('/admin/them-video', [VideosController::class, 'insert_video']);
 Route::post('/admin/hien-thi-video', [VideosController::class, 'select_video']);
 Route::group(['middleware' => 'auth.roles'], function() {
     Route::post('/admin/xoa-video', [VideosController::class, 'delete_video']);
-
-
 });
+
+//--------------------------------------Integrate Login------------------------------------------------
+//Login facebook
+Route::get('/login-facebook',[AuthController::class, 'login_facebook']);
+Route::get('/admin/callback',[AuthController::class, 'callback_facebook']);
+
+//Login Google
+Route::get('/login-google',[AuthController::class, 'login_google']);
+Route::get('/google/callback',[AuthController::class, 'callback_google']);
+
+
 

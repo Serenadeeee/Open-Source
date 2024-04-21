@@ -30,9 +30,14 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'facebook' => [
-        'client_id' => env('3097542977239385'),  //client face của bạn
-        'client_secret' => env('49031da9ef5ddcbc64f2168357018767'),  //client app service face của bạn
-        'redirect' => 'http://localhost/do_an_co_so_2/admin/callback' //callback trả về
+        'client_id' => '443065804770242' ,  //client face của bạn
+        'client_secret' => '2e75463d743d8fd7de41cd8c558c0540',  //client app service face của bạn
+        'redirect' => 'http://localhost/cc/Open-Source/dang-nhap/admin/callback' //callback trả về
+    ],
+    'google' => [
+        'client_id' => '474844116494-akv0j56gt3p0valsvje1leonjhc503p1.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://localhost/cc/Open-Source/google/callback' 
     ],
 
 
