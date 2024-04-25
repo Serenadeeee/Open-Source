@@ -59,10 +59,10 @@
                                         </strong>
                                         <button type="submit" class="btn btn-grape btn-user btn-block">Đăng nhập</button>
                                         <hr>
-                                        <a href="" class="btn btn-google btn-user btn-block">
+                                        <a href="{{url('/login-google')}}" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Đăng nhập với Google
                                         </a>
-                                        <a href="" class="btn btn-facebook btn-user btn-block">
+                                        <a href="{{url('/login-facebook')}}" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Đăng nhập với Facebook
                                         </a>
                                     </form>

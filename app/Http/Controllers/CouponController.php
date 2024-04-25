@@ -19,7 +19,6 @@ class CouponController extends Controller {
             return redirect('admin/dang-nhap')->send();
         }
     }
-
     public function add_coupon() {
 
         $this->AuthLogin(); //Gọi hàm kiểm tra đăng nhập Admin

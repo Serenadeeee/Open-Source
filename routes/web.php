@@ -19,7 +19,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\CheckoutController;
-
+use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -141,6 +141,9 @@ Route::post('/autocomplete-ajax', [HomeControllerHomeController::class, 'autocom
 // Route::get('/gui-mail', [MailController::class, 'send_mail']);
 
 
+Route::get('/quen_mat_khau', [MailController::class, 'quen_mat_khau']);
+Route::post('/recover_pass', [MailController::class, 'recover_pass']);
+
 // ---------------------------------------- Message Controller ----------------------------------------
 Route::get('/admin/chinh-sua-mail', [MessageController::class, 'edit_mail']);
 Route::get('/admin/tin-nhan-lien-he', [MessageController::class, 'mess_with_us']);
@@ -219,4 +222,15 @@ Route::post('/admin/hien-thi-video', [VideosController::class, 'select_video']);
 Route::group(['middleware' => 'auth.roles'], function() {
     Route::post('/admin/xoa-video', [VideosController::class, 'delete_video']);
 });
+
+//--------------------------------------Integrate Login------------------------------------------------
+//Login facebook
+Route::get('/login-facebook',[AuthController::class, 'login_facebook']);
+Route::get('/admin/callback',[AuthController::class, 'callback_facebook']);
+
+//Login Google
+Route::get('/login-google',[AuthController::class, 'login_google']);
+Route::get('/google/callback',[AuthController::class, 'callback_google']);
+
+
 

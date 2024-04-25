@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 18, 2022 lúc 10:26 AM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 8.1.6
+-- Máy chủ: 127.0.0.1:3306
+-- Thời gian đã tạo: Th4 21, 2024 lúc 12:54 PM
+-- Phiên bản máy phục vụ: 8.2.0
+-- Phiên bản PHP: 8.1.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,15 +27,17 @@ SET time_zone = "+00:00";
 -- Cấu trúc bảng cho bảng `admin`
 --
 
-CREATE TABLE `admin` (
-  `admin_id` int(10) UNSIGNED NOT NULL,
-  `admin_user` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `admin_password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `admin_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `admin_phone` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `admin_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `admin_user` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `admin`
@@ -56,11 +58,13 @@ INSERT INTO `admin` (`admin_id`, `admin_user`, `admin_password`, `admin_name`, `
 -- Cấu trúc bảng cho bảng `admin_model_roles_model`
 --
 
-CREATE TABLE `admin_model_roles_model` (
-  `id_admin_roles` int(11) NOT NULL,
-  `admin_model_admin_id` int(10) UNSIGNED NOT NULL,
-  `roles_model_id_roles` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `admin_model_roles_model`;
+CREATE TABLE IF NOT EXISTS `admin_model_roles_model` (
+  `id_admin_roles` int NOT NULL AUTO_INCREMENT,
+  `admin_model_admin_id` int UNSIGNED NOT NULL,
+  `roles_model_id_roles` int UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_admin_roles`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `admin_model_roles_model`
@@ -82,30 +86,32 @@ INSERT INTO `admin_model_roles_model` (`id_admin_roles`, `admin_model_admin_id`,
 -- Cấu trúc bảng cho bảng `categories_product`
 --
 
-CREATE TABLE `categories_product` (
-  `category_id` int(10) UNSIGNED NOT NULL,
-  `category_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_keywords` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category_desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category_status` int(11) NOT NULL,
+DROP TABLE IF EXISTS `categories_product`;
+CREATE TABLE IF NOT EXISTS `categories_product` (
+  `category_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_status` int NOT NULL,
   `created_at` date DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `categories_product`
 --
 
 INSERT INTO `categories_product` (`category_id`, `category_name`, `meta_keywords`, `category_desc`, `category_status`, `created_at`, `updated_at`) VALUES
-(23, 'HP', 'HP', 'Tốt nhất cho tính năng 2 trong 1', 1, '2024-1-16', '2024-1-17 15:37:13'),
-(24, 'LENOVO', 'LENOVO', 'Được đánh giá tốt nhất', 1, '2024-1-16', '2024-1-17 15:36:23'),
-(25, 'SAMSUM', 'SAMSUM', 'Uy tín chất lượng', 1, '2024-1-16', '2024-1-17 15:32:07'),
-(26, 'MICROSOFT', 'MICROSOFT', 'Thay thế tốt nhất của Apple', 0, '2024-1-16', '2024-1-27 05:53:33'),
-(27, 'ASUS', 'ASUS', 'Thiết kế thân máy tốt nhất', 1, '2024-1-19', '2024-1-17 15:33:49'),
-(28, 'RAZER', 'RAZER', 'Thiết kế thân máy tốt nhất.', 1, '2024-1-19', '2024-1-17 22:35:00'),
-(29, 'APPLE', 'APPLE', 'Hỗ trợ khách hàng tốt nhất', 1, '2024-1-19', '2024-1-17 15:33:33'),
-(30, 'DELL', 'DELL', 'Tốt nhất trong việc đổi mới', 1, '2024-1-19', '2024-1-17 15:37:38'),
-(34, 'ACER', 'ACER', 'Lựa chọn tốt nhất', 0, '2024-1-25', '2024-1-27 06:57:21');
+(23, 'HP', 'HP', 'Tốt nhất cho tính năng 2 trong 1', 1, '2021-10-16', '2022-11-17 15:37:13'),
+(24, 'LENOVO', 'LENOVO', 'Được đánh giá tốt nhất', 1, '2021-10-16', '2022-11-17 15:36:23'),
+(25, 'SAMSUM', 'SAMSUM', 'Uy tín chất lượng', 1, '2021-10-16', '2022-11-17 15:32:07'),
+(26, 'MICROSOFT', 'MICROSOFT', 'Thay thế tốt nhất của Apple', 0, '2021-10-16', '2022-11-27 05:53:33'),
+(27, 'ASUS', 'ASUS', 'Thiết kế thân máy tốt nhất', 1, '2021-10-19', '2022-11-17 15:33:49'),
+(28, 'RAZER', 'RAZER', 'Thiết kế thân máy tốt nhất.', 1, '2021-10-19', '2022-11-17 22:35:00'),
+(29, 'APPLE', 'APPLE', 'Hỗ trợ khách hàng tốt nhất', 1, '2021-10-19', '2022-11-17 15:33:33'),
+(30, 'DELL', 'DELL', 'Tốt nhất trong việc đổi mới', 1, '2021-10-19', '2022-11-17 15:37:38'),
+(34, 'ACER', 'ACER', 'Lựa chọn tốt nhất', 0, '2021-11-25', '2022-11-27 06:57:21');
 
 -- --------------------------------------------------------
 
@@ -113,14 +119,16 @@ INSERT INTO `categories_product` (`category_id`, `category_name`, `meta_keywords
 -- Cấu trúc bảng cho bảng `coupon`
 --
 
-CREATE TABLE `coupon` (
-  `coupon_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `coupon`;
+CREATE TABLE IF NOT EXISTS `coupon` (
+  `coupon_id` int NOT NULL AUTO_INCREMENT,
   `coupon_name` varchar(150) DEFAULT NULL,
   `coupon_code` varchar(50) DEFAULT NULL,
-  `coupon_time` int(11) DEFAULT NULL,
-  `coupon_condition` int(11) DEFAULT NULL,
-  `coupon_number` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `coupon_time` int DEFAULT NULL,
+  `coupon_condition` int DEFAULT NULL,
+  `coupon_number` int DEFAULT NULL,
+  PRIMARY KEY (`coupon_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `coupon`
@@ -128,8 +136,8 @@ CREATE TABLE `coupon` (
 
 INSERT INTO `coupon` (`coupon_id`, `coupon_name`, `coupon_code`, `coupon_time`, `coupon_condition`, `coupon_number`) VALUES
 (1, 'Giảm giá dịch Covid-19', 'COVID19', 10, 1, 10),
-(4, 'Giáng sinh 2024', 'NOEL2024', 1, 1, 30),
-(5, 'Ngày nhà giáo Việt Nam', 'GIAOVIEN2024', 10, 2, 70000);
+(4, 'Giáng sinh 2022', 'NOEL2022', 1, 1, 30),
+(5, 'Ngày nhà giáo Việt Nam', 'GIAOVIEN2022', 10, 2, 70000);
 
 -- --------------------------------------------------------
 
@@ -137,11 +145,13 @@ INSERT INTO `coupon` (`coupon_id`, `coupon_name`, `coupon_code`, `coupon_time`, 
 -- Cấu trúc bảng cho bảng `migrations`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `migrations`
@@ -165,23 +175,25 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Cấu trúc bảng cho bảng `product`
 --
 
-CREATE TABLE `product` (
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_quantity` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_sold` int(11) DEFAULT NULL,
-  `product_desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_content` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_keywords` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_origin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_unit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_status` int(11) NOT NULL,
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE IF NOT EXISTS `product` (
+  `product_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `category_id` int NOT NULL,
+  `product_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_quantity` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_sold` int DEFAULT NULL,
+  `product_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_price` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_origin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_unit` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_status` int NOT NULL,
   `created_at` date DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `product`
@@ -234,12 +246,14 @@ INSERT INTO `product` (`product_id`, `category_id`, `product_name`, `product_qua
 -- Cấu trúc bảng cho bảng `tbl_category_post`
 --
 
-CREATE TABLE `tbl_category_post` (
-  `cate_post_id` int(10) UNSIGNED NOT NULL,
-  `cate_post_name` tinytext DEFAULT NULL,
+DROP TABLE IF EXISTS `tbl_category_post`;
+CREATE TABLE IF NOT EXISTS `tbl_category_post` (
+  `cate_post_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `cate_post_name` tinytext,
   `cate_post_slug` varchar(255) DEFAULT NULL,
-  `cate_post_status` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `cate_post_status` int DEFAULT NULL,
+  PRIMARY KEY (`cate_post_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_category_post`
@@ -256,15 +270,17 @@ INSERT INTO `tbl_category_post` (`cate_post_id`, `cate_post_name`, `cate_post_sl
 -- Cấu trúc bảng cho bảng `tbl_comment`
 --
 
-CREATE TABLE `tbl_comment` (
-  `comment_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_comment`;
+CREATE TABLE IF NOT EXISTS `tbl_comment` (
+  `comment_id` int NOT NULL AUTO_INCREMENT,
   `comment` varchar(255) DEFAULT NULL,
   `comment_name` varchar(255) DEFAULT NULL,
   `comment_date` timestamp NULL DEFAULT NULL,
-  `comment_product_id` int(11) DEFAULT NULL,
-  `comment_parent_comment` int(11) DEFAULT NULL,
-  `comment_status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `comment_product_id` int DEFAULT NULL,
+  `comment_parent_comment` int DEFAULT NULL,
+  `comment_status` int NOT NULL,
+  PRIMARY KEY (`comment_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_comment`
@@ -279,15 +295,17 @@ INSERT INTO `tbl_comment` (`comment_id`, `comment`, `comment_name`, `comment_dat
 -- Cấu trúc bảng cho bảng `tbl_customer`
 --
 
-CREATE TABLE `tbl_customer` (
-  `customer_id` int(10) UNSIGNED NOT NULL,
-  `customer_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `tbl_customer`;
+CREATE TABLE IF NOT EXISTS `tbl_customer` (
+  `customer_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `customer_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`customer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_customer`
@@ -305,7 +323,8 @@ INSERT INTO `tbl_customer` (`customer_id`, `customer_name`, `customer_email`, `c
 (9, 'Customer 8', 'customer8@gmail.com', '25f9e794323b453885f5181f1b624d0b', '0355268479', NULL, NULL),
 (10, 'Customer 9', 'customer9@gmail.com', '25f9e794323b453885f5181f1b624d0b', '0662354978', NULL, NULL),
 (11, 'Customer 10', 'customer10@gmail.com', '25f9e794323b453885f5181f1b624d0b', '0883246957', NULL, NULL),
-(12, 'duc1234', 'duc@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456789', NULL, NULL);
+(12, 'duc1234', 'duc@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456789', NULL, NULL),
+(13, 'nhi123', '030237210134@st.buh.edu.vn', '25d55ad283aa400af464c76d713c07ad', '0901424462', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -313,13 +332,15 @@ INSERT INTO `tbl_customer` (`customer_id`, `customer_name`, `customer_email`, `c
 -- Cấu trúc bảng cho bảng `tbl_feeship`
 --
 
-CREATE TABLE `tbl_feeship` (
-  `fee_id` int(11) NOT NULL,
-  `fee_matp` int(11) DEFAULT NULL,
-  `fee_maqh` int(11) DEFAULT NULL,
-  `fee_xaid` int(11) DEFAULT NULL,
-  `fee_feeship` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `tbl_feeship`;
+CREATE TABLE IF NOT EXISTS `tbl_feeship` (
+  `fee_id` int NOT NULL AUTO_INCREMENT,
+  `fee_matp` int DEFAULT NULL,
+  `fee_maqh` int DEFAULT NULL,
+  `fee_xaid` int DEFAULT NULL,
+  `fee_feeship` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`fee_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_feeship`
@@ -344,12 +365,14 @@ INSERT INTO `tbl_feeship` (`fee_id`, `fee_matp`, `fee_maqh`, `fee_xaid`, `fee_fe
 -- Cấu trúc bảng cho bảng `tbl_gallery`
 --
 
-CREATE TABLE `tbl_gallery` (
-  `gallery_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_gallery`;
+CREATE TABLE IF NOT EXISTS `tbl_gallery` (
+  `gallery_id` int NOT NULL AUTO_INCREMENT,
   `gallery_name` varchar(255) DEFAULT NULL,
   `gallery_image` varchar(255) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `product_id` int DEFAULT NULL,
+  PRIMARY KEY (`gallery_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_gallery`
@@ -408,14 +431,16 @@ INSERT INTO `tbl_gallery` (`gallery_id`, `gallery_name`, `gallery_image`, `produ
 -- Cấu trúc bảng cho bảng `tbl_message`
 --
 
-CREATE TABLE `tbl_message` (
-  `mess_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_message`;
+CREATE TABLE IF NOT EXISTS `tbl_message` (
+  `mess_id` int NOT NULL AUTO_INCREMENT,
   `name_mess` varchar(255) NOT NULL,
   `phone_mess` varchar(255) NOT NULL,
   `email_mess` varchar(255) NOT NULL,
   `content_mess` text NOT NULL,
-  `mess_status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `mess_status` int NOT NULL,
+  PRIMARY KEY (`mess_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_message`
@@ -437,16 +462,18 @@ INSERT INTO `tbl_message` (`mess_id`, `name_mess`, `phone_mess`, `email_mess`, `
 -- Cấu trúc bảng cho bảng `tbl_order`
 --
 
-CREATE TABLE `tbl_order` (
-  `order_id` int(10) UNSIGNED NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `shipping_id` int(11) NOT NULL,
-  `order_status` int(11) NOT NULL,
-  `order_code` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_payment` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_order`;
+CREATE TABLE IF NOT EXISTS `tbl_order` (
+  `order_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `customer_id` int NOT NULL,
+  `shipping_id` int NOT NULL,
+  `order_status` int NOT NULL,
+  `order_code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_payment` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_order`
@@ -459,7 +486,8 @@ INSERT INTO `tbl_order` (`order_id`, `customer_id`, `shipping_id`, `order_status
 (79, 12, 79, 1, 'a425c', 21990000, '2022-12-18 08:39:27', NULL),
 (80, 12, 80, 3, 'eed1c', 11000000, '2022-12-18 08:40:12', NULL),
 (81, 12, 81, 1, 'c8bea', 11000000, '2022-12-18 09:01:31', NULL),
-(82, 12, 82, 1, '30323', 23590000, '2022-12-18 09:01:54', NULL);
+(82, 12, 82, 1, '30323', 23590000, '2022-12-18 09:01:54', NULL),
+(83, 13, 83, 1, '16362', 33025000, '2024-04-19 13:32:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -467,18 +495,20 @@ INSERT INTO `tbl_order` (`order_id`, `customer_id`, `shipping_id`, `order_status
 -- Cấu trúc bảng cho bảng `tbl_order_details`
 --
 
-CREATE TABLE `tbl_order_details` (
-  `order_details_id` int(10) UNSIGNED NOT NULL,
-  `order_code` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_sales_quantity` int(11) NOT NULL,
-  `product_coupon` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_feeship` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `tbl_order_details`;
+CREATE TABLE IF NOT EXISTS `tbl_order_details` (
+  `order_details_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `order_code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_id` int NOT NULL,
+  `product_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_price` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_sales_quantity` int NOT NULL,
+  `product_coupon` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_feeship` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`order_details_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_order_details`
@@ -492,7 +522,9 @@ INSERT INTO `tbl_order_details` (`order_details_id`, `order_code`, `product_id`,
 (41, 'a425c', 68, 'Asus-tuf-gaming-fx506lhb-i5', '21990000', 1, 'no', '35000', NULL, NULL),
 (42, 'eed1c', 52, 'Hp-pavilion-15-eg2036tx-i5', '11000000', 1, 'no', '35000', NULL, NULL),
 (43, 'c8bea', 52, 'Hp-pavilion-15-eg2036tx-i5', '11000000', 1, 'no', '35000', NULL, NULL),
-(44, '30323', 69, 'Lenovo-gaming-legion-5', '23590000', 1, 'no', '35000', NULL, NULL);
+(44, '30323', 69, 'Lenovo-gaming-legion-5', '23590000', 1, 'no', '35000', NULL, NULL),
+(45, '16362', 52, 'Hp-pavilion-15-eg2036tx-i5', '11000000', 1, 'no', '35000', NULL, NULL),
+(46, '16362', 51, 'Hp-pavilion-15-i5', '21990000', 1, 'no', '35000', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -500,12 +532,14 @@ INSERT INTO `tbl_order_details` (`order_details_id`, `order_code`, `product_id`,
 -- Cấu trúc bảng cho bảng `tbl_partner`
 --
 
-CREATE TABLE `tbl_partner` (
-  `partner_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_partner`;
+CREATE TABLE IF NOT EXISTS `tbl_partner` (
+  `partner_id` int NOT NULL AUTO_INCREMENT,
   `partner_name` varchar(255) DEFAULT NULL,
   `partner_image` varchar(100) DEFAULT NULL,
-  `partner_link` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `partner_link` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`partner_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_partner`
@@ -526,18 +560,20 @@ INSERT INTO `tbl_partner` (`partner_id`, `partner_name`, `partner_image`, `partn
 -- Cấu trúc bảng cho bảng `tbl_posts`
 --
 
-CREATE TABLE `tbl_posts` (
-  `post_id` int(11) NOT NULL,
-  `cate_post_id` int(10) UNSIGNED DEFAULT NULL,
-  `post_title` tinytext DEFAULT NULL,
+DROP TABLE IF EXISTS `tbl_posts`;
+CREATE TABLE IF NOT EXISTS `tbl_posts` (
+  `post_id` int NOT NULL AUTO_INCREMENT,
+  `cate_post_id` int UNSIGNED DEFAULT NULL,
+  `post_title` tinytext,
   `post_image` varchar(255) DEFAULT NULL,
   `post_slug` varchar(255) DEFAULT NULL,
-  `post_desc` text DEFAULT NULL,
-  `post_content` text DEFAULT NULL,
-  `post_status` int(11) DEFAULT NULL,
+  `post_desc` text,
+  `post_content` text,
+  `post_status` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`post_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_posts`
@@ -557,11 +593,13 @@ INSERT INTO `tbl_posts` (`post_id`, `cate_post_id`, `post_title`, `post_image`, 
 -- Cấu trúc bảng cho bảng `tbl_quanhuyen`
 --
 
-CREATE TABLE `tbl_quanhuyen` (
-  `maqh` int(10) NOT NULL,
-  `name_quanhuyen` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `matp` int(10) NOT NULL
+DROP TABLE IF EXISTS `tbl_quanhuyen`;
+CREATE TABLE IF NOT EXISTS `tbl_quanhuyen` (
+  `maqh` int NOT NULL,
+  `name_quanhuyen` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `matp` int NOT NULL,
+  PRIMARY KEY (`maqh`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1289,11 +1327,13 @@ INSERT INTO `tbl_quanhuyen` (`maqh`, `name_quanhuyen`, `type`, `matp`) VALUES
 -- Cấu trúc bảng cho bảng `tbl_rating`
 --
 
-CREATE TABLE `tbl_rating` (
-  `rating_id` int(11) NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `rating` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `tbl_rating`;
+CREATE TABLE IF NOT EXISTS `tbl_rating` (
+  `rating_id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int DEFAULT NULL,
+  `rating` int DEFAULT NULL,
+  PRIMARY KEY (`rating_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_rating`
@@ -1310,10 +1350,12 @@ INSERT INTO `tbl_rating` (`rating_id`, `product_id`, `rating`) VALUES
 -- Cấu trúc bảng cho bảng `tbl_roles`
 --
 
-CREATE TABLE `tbl_roles` (
-  `id_roles` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `tbl_roles`;
+CREATE TABLE IF NOT EXISTS `tbl_roles` (
+  `id_roles` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_roles`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_roles`
@@ -1330,17 +1372,19 @@ INSERT INTO `tbl_roles` (`id_roles`, `name`) VALUES
 -- Cấu trúc bảng cho bảng `tbl_shipping`
 --
 
-CREATE TABLE `tbl_shipping` (
-  `shipping_id` int(10) UNSIGNED NOT NULL,
-  `shipping_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_notes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `shipping_method` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_shipping`;
+CREATE TABLE IF NOT EXISTS `tbl_shipping` (
+  `shipping_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `shipping_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipping_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipping_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipping_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipping_notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `shipping_method` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`shipping_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_shipping`
@@ -1425,7 +1469,8 @@ INSERT INTO `tbl_shipping` (`shipping_id`, `shipping_name`, `shipping_address`, 
 (79, 'Quang kiệt', '1 Chu Lai, Hòa Hải, Ngũ Hành Sơn', '0776206278', 'K@gmail.com', 'lẹ lên', 1, NULL, NULL),
 (80, 'Văn Tèo', '1 Chu Lai, Hòa Hải, Ngũ Hành Sơn', '086727744', 'K@gmail.com', 'giao hàng tận nơi', 1, NULL, NULL),
 (81, 'Quang kiệt', '10 Chu Lai, Hòa Hải, Ngũ Hành Sơn', '0776206278', 'K@gmail.com', 'sss', 1, NULL, NULL),
-(82, 'Anh Đức', '1 Chu Lai, Hòa Hải, Ngũ Hành Sơn', '0776206278', 'i@gmail.com', 'ss', 1, NULL, NULL);
+(82, 'Anh Đức', '1 Chu Lai, Hòa Hải, Ngũ Hành Sơn', '0776206278', 'i@gmail.com', 'ss', 1, NULL, NULL),
+(83, 'Nhinhi', '56 hoàng diệu 2', '0901424462', '030237210134@st.buh.edu.vn', '123', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1433,11 +1478,13 @@ INSERT INTO `tbl_shipping` (`shipping_id`, `shipping_name`, `shipping_address`, 
 -- Cấu trúc bảng cho bảng `tbl_slider`
 --
 
-CREATE TABLE `tbl_slider` (
-  `slider_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_slider`;
+CREATE TABLE IF NOT EXISTS `tbl_slider` (
+  `slider_id` int NOT NULL AUTO_INCREMENT,
   `slider_name` varchar(255) DEFAULT NULL,
-  `slider_image` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `slider_image` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`slider_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_slider`
@@ -1451,17 +1498,34 @@ INSERT INTO `tbl_slider` (`slider_id`, `slider_name`, `slider_image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tbl_social`
+--
+
+DROP TABLE IF EXISTS `tbl_social`;
+CREATE TABLE IF NOT EXISTS `tbl_social` (
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `provider_user_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provider` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user` int NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tbl_statistical`
 --
 
-CREATE TABLE `tbl_statistical` (
-  `id_statistical` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_statistical`;
+CREATE TABLE IF NOT EXISTS `tbl_statistical` (
+  `id_statistical` int NOT NULL AUTO_INCREMENT,
   `order_date` varchar(100) NOT NULL,
   `sales` varchar(200) NOT NULL,
   `profit` varchar(200) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `total_order` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `quantity` int NOT NULL,
+  `total_order` int NOT NULL,
+  PRIMARY KEY (`id_statistical`)
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_statistical`
@@ -1544,10 +1608,12 @@ INSERT INTO `tbl_statistical` (`id_statistical`, `order_date`, `sales`, `profit`
 -- Cấu trúc bảng cho bảng `tbl_tinhthanhpho`
 --
 
-CREATE TABLE `tbl_tinhthanhpho` (
-  `matp` int(10) NOT NULL,
-  `name_city` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `type` varchar(30) CHARACTER SET utf8 NOT NULL
+DROP TABLE IF EXISTS `tbl_tinhthanhpho`;
+CREATE TABLE IF NOT EXISTS `tbl_tinhthanhpho` (
+  `matp` int NOT NULL,
+  `name_city` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  PRIMARY KEY (`matp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -1625,13 +1691,15 @@ INSERT INTO `tbl_tinhthanhpho` (`matp`, `name_city`, `type`) VALUES
 -- Cấu trúc bảng cho bảng `tbl_videos`
 --
 
-CREATE TABLE `tbl_videos` (
-  `video_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_videos`;
+CREATE TABLE IF NOT EXISTS `tbl_videos` (
+  `video_id` int NOT NULL AUTO_INCREMENT,
   `video_title` varchar(255) DEFAULT NULL,
   `video_slug` varchar(255) NOT NULL,
   `video_link` varchar(100) DEFAULT NULL,
-  `video_image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `video_image` varchar(255) NOT NULL,
+  PRIMARY KEY (`video_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_videos`
@@ -1650,11 +1718,13 @@ INSERT INTO `tbl_videos` (`video_id`, `video_title`, `video_slug`, `video_link`,
 -- Cấu trúc bảng cho bảng `tbl_visitors`
 --
 
-CREATE TABLE `tbl_visitors` (
-  `id_visitors` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_visitors`;
+CREATE TABLE IF NOT EXISTS `tbl_visitors` (
+  `id_visitors` int NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(50) NOT NULL,
-  `date_visitor` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `date_visitor` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_visitors`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_visitors`
@@ -1697,11 +1767,13 @@ INSERT INTO `tbl_visitors` (`id_visitors`, `ip_address`, `date_visitor`) VALUES
 -- Cấu trúc bảng cho bảng `tbl_xaphuongthitran`
 --
 
-CREATE TABLE `tbl_xaphuongthitran` (
-  `xaid` int(10) NOT NULL,
-  `name_xaphuong` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `maqh` int(10) NOT NULL
+DROP TABLE IF EXISTS `tbl_xaphuongthitran`;
+CREATE TABLE IF NOT EXISTS `tbl_xaphuongthitran` (
+  `xaid` int NOT NULL,
+  `name_xaphuong` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `maqh` int NOT NULL,
+  PRIMARY KEY (`xaid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -12878,308 +12950,6 @@ INSERT INTO `tbl_xaphuongthitran` (`xaid`, `name_xaphuong`, `type`, `maqh`) VALU
 (32244, 'Thị trấn Rạch Gốc', 'Thị trấn', 973),
 (32245, 'Xã Tân Ân', 'Xã', 973),
 (32248, 'Xã Đất Mũi', 'Xã', 973);
-
---
--- Chỉ mục cho các bảng đã đổ
---
-
---
--- Chỉ mục cho bảng `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`);
-
---
--- Chỉ mục cho bảng `admin_model_roles_model`
---
-ALTER TABLE `admin_model_roles_model`
-  ADD PRIMARY KEY (`id_admin_roles`);
-
---
--- Chỉ mục cho bảng `categories_product`
---
-ALTER TABLE `categories_product`
-  ADD PRIMARY KEY (`category_id`);
-
---
--- Chỉ mục cho bảng `coupon`
---
-ALTER TABLE `coupon`
-  ADD PRIMARY KEY (`coupon_id`);
-
---
--- Chỉ mục cho bảng `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`);
-
---
--- Chỉ mục cho bảng `tbl_category_post`
---
-ALTER TABLE `tbl_category_post`
-  ADD PRIMARY KEY (`cate_post_id`);
-
---
--- Chỉ mục cho bảng `tbl_comment`
---
-ALTER TABLE `tbl_comment`
-  ADD PRIMARY KEY (`comment_id`);
-
---
--- Chỉ mục cho bảng `tbl_customer`
---
-ALTER TABLE `tbl_customer`
-  ADD PRIMARY KEY (`customer_id`);
-
---
--- Chỉ mục cho bảng `tbl_feeship`
---
-ALTER TABLE `tbl_feeship`
-  ADD PRIMARY KEY (`fee_id`);
-
---
--- Chỉ mục cho bảng `tbl_gallery`
---
-ALTER TABLE `tbl_gallery`
-  ADD PRIMARY KEY (`gallery_id`);
-
---
--- Chỉ mục cho bảng `tbl_message`
---
-ALTER TABLE `tbl_message`
-  ADD PRIMARY KEY (`mess_id`);
-
---
--- Chỉ mục cho bảng `tbl_order`
---
-ALTER TABLE `tbl_order`
-  ADD PRIMARY KEY (`order_id`);
-
---
--- Chỉ mục cho bảng `tbl_order_details`
---
-ALTER TABLE `tbl_order_details`
-  ADD PRIMARY KEY (`order_details_id`);
-
---
--- Chỉ mục cho bảng `tbl_partner`
---
-ALTER TABLE `tbl_partner`
-  ADD PRIMARY KEY (`partner_id`);
-
---
--- Chỉ mục cho bảng `tbl_posts`
---
-ALTER TABLE `tbl_posts`
-  ADD PRIMARY KEY (`post_id`);
-
---
--- Chỉ mục cho bảng `tbl_quanhuyen`
---
-ALTER TABLE `tbl_quanhuyen`
-  ADD PRIMARY KEY (`maqh`);
-
---
--- Chỉ mục cho bảng `tbl_rating`
---
-ALTER TABLE `tbl_rating`
-  ADD PRIMARY KEY (`rating_id`) USING BTREE;
-
---
--- Chỉ mục cho bảng `tbl_roles`
---
-ALTER TABLE `tbl_roles`
-  ADD PRIMARY KEY (`id_roles`);
-
---
--- Chỉ mục cho bảng `tbl_shipping`
---
-ALTER TABLE `tbl_shipping`
-  ADD PRIMARY KEY (`shipping_id`);
-
---
--- Chỉ mục cho bảng `tbl_slider`
---
-ALTER TABLE `tbl_slider`
-  ADD PRIMARY KEY (`slider_id`);
-
---
--- Chỉ mục cho bảng `tbl_statistical`
---
-ALTER TABLE `tbl_statistical`
-  ADD PRIMARY KEY (`id_statistical`);
-
---
--- Chỉ mục cho bảng `tbl_tinhthanhpho`
---
-ALTER TABLE `tbl_tinhthanhpho`
-  ADD PRIMARY KEY (`matp`);
-
---
--- Chỉ mục cho bảng `tbl_videos`
---
-ALTER TABLE `tbl_videos`
-  ADD PRIMARY KEY (`video_id`);
-
---
--- Chỉ mục cho bảng `tbl_visitors`
---
-ALTER TABLE `tbl_visitors`
-  ADD PRIMARY KEY (`id_visitors`);
-
---
--- Chỉ mục cho bảng `tbl_xaphuongthitran`
---
-ALTER TABLE `tbl_xaphuongthitran`
-  ADD PRIMARY KEY (`xaid`);
-
---
--- AUTO_INCREMENT cho các bảng đã đổ
---
-
---
--- AUTO_INCREMENT cho bảng `admin`
---
-ALTER TABLE `admin`
-  MODIFY `admin_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT cho bảng `admin_model_roles_model`
---
-ALTER TABLE `admin_model_roles_model`
-  MODIFY `id_admin_roles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
-
---
--- AUTO_INCREMENT cho bảng `categories_product`
---
-ALTER TABLE `categories_product`
-  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-
---
--- AUTO_INCREMENT cho bảng `coupon`
---
-ALTER TABLE `coupon`
-  MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT cho bảng `product`
---
-ALTER TABLE `product`
-  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
-
---
--- AUTO_INCREMENT cho bảng `tbl_category_post`
---
-ALTER TABLE `tbl_category_post`
-  MODIFY `cate_post_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `tbl_comment`
---
-ALTER TABLE `tbl_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
---
--- AUTO_INCREMENT cho bảng `tbl_customer`
---
-ALTER TABLE `tbl_customer`
-  MODIFY `customer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT cho bảng `tbl_feeship`
---
-ALTER TABLE `tbl_feeship`
-  MODIFY `fee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT cho bảng `tbl_gallery`
---
-ALTER TABLE `tbl_gallery`
-  MODIFY `gallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
-
---
--- AUTO_INCREMENT cho bảng `tbl_message`
---
-ALTER TABLE `tbl_message`
-  MODIFY `mess_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT cho bảng `tbl_order`
---
-ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
-
---
--- AUTO_INCREMENT cho bảng `tbl_order_details`
---
-ALTER TABLE `tbl_order_details`
-  MODIFY `order_details_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
---
--- AUTO_INCREMENT cho bảng `tbl_partner`
---
-ALTER TABLE `tbl_partner`
-  MODIFY `partner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- AUTO_INCREMENT cho bảng `tbl_posts`
---
-ALTER TABLE `tbl_posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT cho bảng `tbl_rating`
---
-ALTER TABLE `tbl_rating`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `tbl_roles`
---
-ALTER TABLE `tbl_roles`
-  MODIFY `id_roles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `tbl_shipping`
---
-ALTER TABLE `tbl_shipping`
-  MODIFY `shipping_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
-
---
--- AUTO_INCREMENT cho bảng `tbl_slider`
---
-ALTER TABLE `tbl_slider`
-  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT cho bảng `tbl_statistical`
---
-ALTER TABLE `tbl_statistical`
-  MODIFY `id_statistical` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
-
---
--- AUTO_INCREMENT cho bảng `tbl_videos`
---
-ALTER TABLE `tbl_videos`
-  MODIFY `video_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
--- AUTO_INCREMENT cho bảng `tbl_visitors`
---
-ALTER TABLE `tbl_visitors`
-  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
