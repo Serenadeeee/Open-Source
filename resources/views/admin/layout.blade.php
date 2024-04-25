@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Admin DK Shop - Mua bán laptop chính hãng</title>
+    <title>Admin NT Shop - Mua bán laptop chính hãng</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{url('public/client/img/icoo-logo.png')}}">
     <link href="{{asset('public/server/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -25,7 +25,7 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/admin')}}">
                 <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
                 <div class="sidebar-brand-text mx-3">   
-                    ADMIN DK SHOP
+                    ADMIN NT SHOP
                 </div>
             </a>
             <hr class="sidebar-divider my-0">
@@ -47,7 +47,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{url('/admin/doi-tac')}}">Đối tác</a>
                         <a class="collapse-item" href="{{url('/admin/slider')}}">Quản lý Slider</a>
-                        <a class="collapse-item" href="{{url('/admin/lien-he')}}">Trang liên hệ</a>
                     </div>
                 </div>
             </li>
@@ -128,7 +127,6 @@
                 </a>
                 <div id="collapseVideo" class="collapse" aria-labelledby="headingVideo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="{{url('/admin/them-video')}}">Thêm video</a>
 						<a class="collapse-item" href="{{url('/admin/danh-sach-video')}}">Danh sách video</a>
                     </div>
                 </div>
