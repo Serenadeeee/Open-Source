@@ -10,7 +10,10 @@ use Illuminate\Support\Str;
 use Session;
 use App\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Model\AdminModel;
+use App\Models\AdminModel;
+use DB;
+use App\Http\Requests;
+
 
 class MailController extends Controller {
 
@@ -35,14 +38,11 @@ class MailController extends Controller {
 
     public function recover_pass(Request $request){
         $data = $request->all();
-
  //       $now = Carbon::now("Asia/Ho_Chi_Minh")->format('d-m-Y');
         $title_mail = "Lấy lại mật khẩu";
-      //  $token_random = Str::random();
         $admin = AdminModel::where('admin_user','=',$data['admin_email'])->get();
-        foreach($admin as $key ->$value){
-            $admin_id = $value->admin_id;
-
+        foreach($admin as $key=>$value){
+            $admin_id =$value->admin_id;
         }
         if($admin){
             $count_admin = $admin->count();
@@ -50,19 +50,20 @@ class MailController extends Controller {
                     return redirect()->back()->with('error','Email chưa được đăng kí để khôi phục mật khẩu');
                 }else{
                     $token_random = Str::random();
-                    $admin = Admin::find($admin_id);
+                    $admin = AdminModel::find($admin_id);
                     $admin->admin_token = $token_random;
                     $admin->save();
 
                     $to_email=$data['admin_email'];
                     $link_reset_pass=url('update_new_pass?email='.$to_email.'&token='.$token_random);
-                    $data = array("name"=>$title_mail,"body"=>$link_reset_pass,"email"=>data['admin_email']);
-                    Mail::send('pages.admin.forgot_pass_notify',['data'=>$data],function($message) use ($title_mail,$data)
+                    $data=array("name"=>$title_mail,"body"=>$link_reset_pass,"email"=>$data['admin_email']);
+
+                    Mail::send('admin.forget_pass_notify',['data'=>$data],function($message) use ($title_mail,$data)
                     {
                         $message->to($data['email'])->subject($title_mail);//send this mail with subject
                         $message->from($data['email'],$title_mail);//send from this mail
                     });
-
+                    return redirect()->back()->with('message','Gửi email thành công, vui lòng vào email để đặt lại mật khẩu');
         }
         
     }
